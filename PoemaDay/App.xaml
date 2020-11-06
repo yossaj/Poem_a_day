@@ -1,5 +1,30 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Application xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="PoemaDay.App">
     <Application.Resources>
+        <ResourceDictionary>
+            <Color x:Key="offBlack">#3F3F3F</Color>
+            <Color x:Key="darkGray">#898989</Color>
+            <Color x:Key="backgroundColor">#FFFCEE</Color>
+
+        <Style TargetType="ContentPage">
+            <Setter Property="BackgroundColor" Value="{StaticResource backgroundColor}"/>
+        </Style>
+
+
+        <Style x:Key="titleText" TargetType="Label">
+            <Setter Property="TextColor" Value="{StaticResource offBlack}"/>
+            <Setter Property="FontSize" Value="Large"/>
+        </Style>
+
+        <Style x:Key="subtitleText" TargetType="Label">
+            <Setter Property="TextColor" Value="{StaticResource darkGray}"/>
+            <Setter Property="FontSize" Value="Small"/>
+        </Style>
+
+        <Style x:Key="poemText" TargetType="Label">
+            <Setter Property="TextColor" Value="{StaticResource offBlack}"/>
+            <Setter Property="FontSize" Value="Medium"/>
+        </Style>
+            </ResourceDictionary>
     </Application.Resources>
 </Application>
