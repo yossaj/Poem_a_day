@@ -14,12 +14,18 @@
 
         <StackLayout
             VerticalOptions="CenterAndExpand">
-            <Label Text="Title" Style="{StaticResource titleText}"/>
-            <Label Text="Author" Style="{StaticResource subtitleText}" Margin="0,0,0,20"/>
-            <Label Text="First line of poem" Style="{StaticResource poemText}"/>
-            <Label Text="Second line of poem" Style="{StaticResource poemText}"/>
-            <Label Text="Third line of poem is rather long, much much longer than the previous lines." Style="{StaticResource poemText}"/>
-            <Label Text="Second line of poem" Style="{StaticResource poemText}"/>
+            <Label x:Name="PoemTitle" Text="Title" Style="{StaticResource titleText}"/>
+            <Label x:Name="PoemAuthor" Text="Author" Style="{StaticResource subtitleText}" Margin="0,0,0,20"/>
+            <ListView x:Name="poemLineListView">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                       <ViewCell>
+                          <Label Text="{Binding PoemLine}" Style="{StaticResource poemText}"/>
+                       </ViewCell> 
+                    </DataTemplate>
+            </ListView.ItemTemplate>
+
+            </ListView>
          </StackLayout>
      
     </StackLayout>
