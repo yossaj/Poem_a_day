@@ -1,15 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
-using System.Net;
 using System.Net.Http;
-using System.Text;
-using System.Threading.Tasks;
 using Newtonsoft.Json;
 using PoemaDay.model;
 using Xamarin.Forms;
-using Xamarin.Forms.Internals;
 
 namespace PoemaDay
 {
@@ -62,6 +57,11 @@ namespace PoemaDay
             base.OnAppearing();
 
             GetPoemAsync();
+        }
+
+        void archiveButton_Clicked(System.Object sender, System.EventArgs e)
+        {
+            Navigation.PushAsync(new SavedPoems());
         }
     }
 

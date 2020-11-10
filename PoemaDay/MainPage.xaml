@@ -4,6 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="PoemaDay.MainPage"
     BackgroundColor="#FFFCEE">
+    <StackLayout>
     <StackLayout
         Margin="20">
        <Label
@@ -32,6 +33,22 @@
 
             </ListView>
          </StackLayout>
-     
+
+       
+        </StackLayout>
+             <StackLayout
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="End"
+                BackgroundColor="{StaticResource secondaryColor}"
+
+                >
+                    <Button
+                        x:Name="archiveButton"
+                        Text="Archive"
+                        Clicked="archiveButton_Clicked"
+                        BackgroundColor="{StaticResource secondaryColor}"
+                        />
+            </StackLayout>
     </StackLayout>
+
 </ContentPage>

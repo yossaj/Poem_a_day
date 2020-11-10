@@ -5,6 +5,7 @@
             <Color x:Key="offBlack">#3F3F3F</Color>
             <Color x:Key="darkGray">#898989</Color>
             <Color x:Key="backgroundColor">#FFFCEE</Color>
+            <Color x:Key="secondaryColor">#FFE298</Color>
 
         <Style TargetType="ContentPage">
             <Setter Property="BackgroundColor" Value="{StaticResource backgroundColor}"/>

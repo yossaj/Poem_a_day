@@ -3,16 +3,28 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    BackgroundColor="{StaticResource backgroundColor}"
     x:Class="PoemaDay.SavedPoems">
     <StackLayout>
         <yummy:PancakeView
-            BackgroundColor="Orange"
+            BackgroundColor="{StaticResource secondaryColor}"
             Margin="10"
             CornerRadius="30,0,0,30">
                  <StackLayout Margin="10">
-                 <Label Text="Title"/>
-                 <Label Text="Author"/>
+                 <Label Text="Title" Margin="5"/>
+                 <Label Text="Author" Margin="5"/>
              </StackLayout>
         </yummy:PancakeView>
+
+        <yummy:PancakeView
+            BackgroundColor="{StaticResource secondaryColor}"
+            Margin="10"
+            CornerRadius="30,0,0,30">
+                 <StackLayout Margin="10">
+                 <Label Text="Title" Margin="5"/>
+                 <Label Text="Author" Margin="5"/>
+             </StackLayout>
+        </yummy:PancakeView>
+
     </StackLayout>
 </ContentPage>
