@@ -5,23 +5,28 @@
     x:Class="PoemaDay.MainPage"
     BackgroundColor="#FFFCEE">
     <StackLayout
-        
         Margin="20">
        <Label
-        
            HorizontalOptions="Center"
+           Margin="0,0,0,80"
            Text="Daily Poem"/>
 
         <StackLayout
             VerticalOptions="CenterAndExpand">
-            <Label x:Name="PoemTitle" Text="Title" Style="{StaticResource titleText}"/>
+            <Label x:Name="PoemTitle" Text="Title" Style="{StaticResource titleText}" />
             <Label x:Name="PoemAuthor" Text="Author" Style="{StaticResource subtitleText}" Margin="0,0,0,20"/>
-            <ListView x:Name="poemLineListView">
+            <ListView x:Name="poemLineListView"
+                      BackgroundColor="{StaticResource backgroundColor}"
+                      SeparatorColor="{StaticResource backgroundColor}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                        <ViewCell>
-                          <Label Text="{Binding PoemLine}" Style="{StaticResource poemText}"/>
-                       </ViewCell> 
+                          <Label
+                              Text="{Binding PoemLine}"
+                              Style="{StaticResource poemText}"
+                              />
+                       </ViewCell>
+ 
                     </DataTemplate>
             </ListView.ItemTemplate>
 

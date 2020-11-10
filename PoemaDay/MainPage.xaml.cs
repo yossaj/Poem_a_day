@@ -27,14 +27,21 @@ namespace PoemaDay
             List<Poem> poems = new List<Poem>();
             using (HttpClient httpClient = new HttpClient())
             {
-               var response = await httpClient.GetAsync("https://poetrydb.org/linecount/6");
+                Random rnd = new Random();
+                int linecount = rnd.Next(2, 6);
+                var response = await httpClient.GetAsync($"https://poetrydb.org/linecount/{linecount}");
                 var json = await response.Content.ReadAsStringAsync();
                 var poemList = JsonConvert.DeserializeObject<List<Poem>>(json);
-                var leng = poemList.Count();
-                PoemTitle.Text = poemList[0].title;
-                PoemAuthor.Text = poemList[0].author;
+
+                int leng = poemList.Count();
+                
+                int poemNum = rnd.Next(0, leng);
+
+                PoemTitle.Text = poemList[poemNum].title;
+                PoemAuthor.Text = poemList[poemNum].author;
                 var lines = new List<Line>();
-                foreach(string pline in poemList[0].lines)
+             
+                foreach (string pline in poemList[poemNum].lines)
                 {
                     Line newLine = new Line()
                     {
