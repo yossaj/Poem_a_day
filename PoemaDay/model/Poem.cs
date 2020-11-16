@@ -1,17 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
 using Newtonsoft.Json;
+using SQLite;
 
 namespace PoemaDay.model
 {
     public class Poem
     {
 
+       [PrimaryKey, AutoIncrement]
+        public int id { get; set; }
+
         public string title { get; set; }
 
         public string author { get; set; }
 
-        [JsonProperty("lines")]
+        [Ignore]
         public List<string> lines { get; set; }
 
         public string linecount { get; set; }
@@ -21,6 +25,5 @@ namespace PoemaDay.model
     {
         public string PoemLine { get; set; }
     }
-
 
 }

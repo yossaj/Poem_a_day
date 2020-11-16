@@ -43,11 +43,18 @@
 
                 >
                     <Button
-                        x:Name="archiveButton"
+                        x:Name="ArchiveButton"
                         Text="Archive"
-                        Clicked="archiveButton_Clicked"
+                        Clicked="ArchiveButton_Clicked"
                         BackgroundColor="{StaticResource secondaryColor}"
                         />
+
+                 <Button
+                     x:Name="SaveButton"
+                     Text="Save Poem"
+                     Clicked="SaveButton_Clicked"
+                     BackgroundColor="{StaticResource secondaryColor}"
+                     />
             </StackLayout>
     </StackLayout>
 

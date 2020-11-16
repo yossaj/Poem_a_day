@@ -4,13 +4,15 @@ using Xamarin.Forms.Xaml;
 
 namespace PoemaDay
 {
+    
     public partial class App : Application
     {
-        public App()
+        public static string DatabaseLocation = string.Empty;
+        public App(string databaseLocation)
         {
             InitializeComponent();
-
             MainPage = new NavigationPage(new MainPage());
+            DatabaseLocation = databaseLocation;
         }
 
         protected override void OnStart()

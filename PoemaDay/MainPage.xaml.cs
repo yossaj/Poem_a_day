@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net.Http;
 using Newtonsoft.Json;
 using PoemaDay.model;
+using SQLite;
 using Xamarin.Forms;
 
 namespace PoemaDay
@@ -15,6 +16,8 @@ namespace PoemaDay
             InitializeComponent();
            
         }
+
+        Poem poem = new Poem();
 
 
         async void GetPoemAsync()
@@ -32,6 +35,7 @@ namespace PoemaDay
                 
                 int poemNum = rnd.Next(0, leng);
 
+                poem = poemList[poemNum];
                 PoemTitle.Text = poemList[poemNum].title;
                 PoemAuthor.Text = poemList[poemNum].author;
                 var lines = new List<Line>();
@@ -59,9 +63,37 @@ namespace PoemaDay
             GetPoemAsync();
         }
 
-        void archiveButton_Clicked(System.Object sender, System.EventArgs e)
+        void ArchiveButton_Clicked(System.Object sender, System.EventArgs e) => Navigation.PushAsync(new SavedPoems());
+
+        void SaveButton_Clicked(System.Object sender, System.EventArgs e) => SavePoemToTable();
+
+        private void SavePoemToTable()
         {
-            Navigation.PushAsync(new SavedPoems());
+            using (SQLiteConnection conn = new   SQLiteConnection(App.DatabaseLocation))
+            {
+                var rows = 0;
+
+
+                if (poem != null)
+                {
+                    conn.CreateTable<Poem>();
+                     rows = conn.Insert(poem);
+                }
+                else
+                {
+                    DisplayAlert("Something Went Wrong", "Experience was not added!", "OK");
+                }
+                
+                if (rows > 0)
+                {
+                    DisplayAlert("Success", "Experience add", "OK");
+                }
+                else
+                {
+                    DisplayAlert("Something Went Wrong", "Experience was not added!", "OK");
+                }
+
+            }
         }
     }
 
