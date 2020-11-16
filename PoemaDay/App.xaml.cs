@@ -13,7 +13,7 @@ namespace PoemaDay
             InitializeComponent();
             MainPage = new NavigationPage(new MainPage())
             {
-                BarBackgroundColor = Color.FromHex("#FFFCEE")
+                BarBackgroundColor = (Color)App.Current.Resources["secondaryColor"]
             };
             DatabaseLocation = databaseLocation;
         }

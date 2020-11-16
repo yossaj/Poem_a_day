@@ -5,8 +5,9 @@
     xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
     BackgroundColor="{StaticResource backgroundColor}"
     x:Class="PoemaDay.SavedPoems">
-    <StackLayout>
-        <yummy:PancakeView
+    <StackLayout
+        x:Name="PoemList">
+        <!--<yummy:PancakeView
             BackgroundColor="{StaticResource secondaryColor}"
             Margin="10"
             CornerRadius="30,0,0,30">
@@ -24,7 +25,8 @@
                  <Label Text="Title" Margin="5"/>
                  <Label Text="Author" Margin="5"/>
              </StackLayout>
-        </yummy:PancakeView>
+        </yummy:PancakeView>-->
+
 
     </StackLayout>
 </ContentPage>
