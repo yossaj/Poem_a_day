@@ -18,6 +18,8 @@ namespace PoemaDay.model
         [Ignore]
         public List<string> lines { get; set; }
 
+        public String concatLines { get; set; }
+
         public string linecount { get; set; }
     }
 

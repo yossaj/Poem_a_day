@@ -3,9 +3,10 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="PoemaDay.MainPage"
-    BackgroundColor="#FFFCEE">
+    BackgroundColor="{StaticResource backgroundColor}">
     <StackLayout>
     <StackLayout
+        VerticalOptions="FillAndExpand"
         Margin="20">
        <Label
            HorizontalOptions="Center"
@@ -13,38 +14,30 @@
            Text="Daily Poem"/>
 
         <StackLayout
+            Margin="2"
             VerticalOptions="CenterAndExpand">
             <Label x:Name="PoemTitle" Text="Title" Style="{StaticResource titleText}" />
             <Label x:Name="PoemAuthor" Text="Author" Style="{StaticResource subtitleText}" Margin="0,0,0,20"/>
-            <ListView x:Name="poemLineListView"
-                      BackgroundColor="{StaticResource backgroundColor}"
-                      SeparatorColor="{StaticResource backgroundColor}">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                       <ViewCell>
-                          <Label
-                              Text="{Binding PoemLine}"
-                              Style="{StaticResource poemText}"
-                              />
-                       </ViewCell>
- 
-                    </DataTemplate>
-            </ListView.ItemTemplate>
-
-            </ListView>
+            <Label
+                x:Name="PoemBody"
+                Text="PoemBody"
+                LineHeight="1.3"
+                Style="{StaticResource poemText}"
+                />
          </StackLayout>
 
        
         </StackLayout>
-             <StackLayout
-                HorizontalOptions="FillAndExpand"
-                VerticalOptions="End"
-                BackgroundColor="{StaticResource secondaryColor}"
 
+          <StackLayout
+                Orientation="Horizontal"
+                BackgroundColor="{StaticResource secondaryColor}"
+                VerticalOptions="Center"
                 >
                     <Button
                         x:Name="ArchiveButton"
                         Text="Archive"
+                        HorizontalOptions="FillAndExpand"
                         Clicked="ArchiveButton_Clicked"
                         BackgroundColor="{StaticResource secondaryColor}"
                         />
@@ -52,10 +45,15 @@
                  <Button
                      x:Name="SaveButton"
                      Text="Save Poem"
+                     HorizontalOptions="FillAndExpand"
                      Clicked="SaveButton_Clicked"
                      BackgroundColor="{StaticResource secondaryColor}"
                      />
             </StackLayout>
+
+           
     </StackLayout>
+
+
 
 </ContentPage>

@@ -6,6 +6,7 @@ using Newtonsoft.Json;
 using PoemaDay.model;
 using SQLite;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 
 namespace PoemaDay
 {
@@ -35,22 +36,21 @@ namespace PoemaDay
                 
                 int poemNum = rnd.Next(0, leng);
 
-                poem = poemList[poemNum];
+                
                 PoemTitle.Text = poemList[poemNum].title;
                 PoemAuthor.Text = poemList[poemNum].author;
-                var lines = new List<Line>();
-             
+                String lines = "";
+                
+                //var lines = new List<Line>();
+
                 foreach (string pline in poemList[poemNum].lines)
                 {
-                    Line newLine = new Line()
-                    {
-                        PoemLine = pline
-                    };
-                    lines.Add(newLine);
+                    lines += pline + "\n";
                 }
-                poemLineListView.ItemsSource = lines;
-
-
+               
+                PoemBody.Text = lines;
+                poemList[poemNum].concatLines = lines;
+                poem = poemList[poemNum];
             }
 
         }
@@ -77,7 +77,7 @@ namespace PoemaDay
                 if (poem != null)
                 {
                     conn.CreateTable<Poem>();
-                     rows = conn.Insert(poem);
+                    rows = conn.Insert(poem);
                 }
                 else
                 {
@@ -86,7 +86,7 @@ namespace PoemaDay
                 
                 if (rows > 0)
                 {
-                    DisplayAlert("Success", "Experience add", "OK");
+                    DisplayAlert("Success", "Experience add: " + rows.ToString(), "OK");
                 }
                 else
                 {
