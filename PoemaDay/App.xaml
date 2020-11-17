@@ -6,9 +6,15 @@
             <Color x:Key="darkGray">#898989</Color>
             <Color x:Key="backgroundColor">#FFFCEE</Color>
             <Color x:Key="secondaryColor">#FFE298</Color>
+            <Color x:Key="secondaryColorDark">#ffde8a</Color>
 
         <Style TargetType="ContentPage">
             <Setter Property="BackgroundColor" Value="{StaticResource backgroundColor}"/>
+        </Style>
+
+
+         <Style TargetType="Button">
+            <Setter Property="TextColor" Value="White" />
         </Style>
 
 

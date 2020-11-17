@@ -39,7 +39,8 @@
                         Text="Archive"
                         HorizontalOptions="FillAndExpand"
                         Clicked="ArchiveButton_Clicked"
-                        BackgroundColor="{StaticResource secondaryColor}"
+                        FontAttributes="Bold"
+                        BackgroundColor="{StaticResource secondaryColorDark}"
                         />
 
                  <Button
@@ -47,7 +48,8 @@
                      Text="Save Poem"
                      HorizontalOptions="FillAndExpand"
                      Clicked="SaveButton_Clicked"
-                     BackgroundColor="{StaticResource secondaryColor}"
+                     FontAttributes="Bold"
+                     BackgroundColor="{StaticResource secondaryColorDark}"
                      />
             </StackLayout>
 
