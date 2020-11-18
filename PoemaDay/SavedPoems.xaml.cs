@@ -13,6 +13,7 @@ namespace PoemaDay
         public SavedPoems()
         {
             InitializeComponent();
+            GetSavedPoems();
 
         }
 
@@ -82,12 +83,6 @@ namespace PoemaDay
             };
             await Navigation.PushAsync(poemDetail);
             
-        }
-
-        protected override void OnAppearing()
-        {
-            base.OnAppearing();
-            GetSavedPoems();
         }
     }
 }
