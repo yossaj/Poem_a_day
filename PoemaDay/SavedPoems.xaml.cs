@@ -37,12 +37,15 @@ namespace PoemaDay
             Label title = new Label()
             {
                 Text = poem.title,
-                Margin = 5
+                Margin = new Thickness(10, 10, 10, 0)
             };
             Label author = new Label()
             {
                 Text = poem.author,
-                Margin = 5
+                TextColor = (Color)App.Current.Resources["offBlack"],
+                Margin = new Thickness(10, 0, 10, 10)
+
+
             };
             PancakeView pancakeView = new PancakeView()
             {
@@ -58,7 +61,7 @@ namespace PoemaDay
             innerContainer.Children.Add(author);
            
             pancakeView.Content = innerContainer;
-            //PoemList.Chidren.Add
+
             StackLayout parent = PoemList;
             parent.Children.Add(pancakeView);
        

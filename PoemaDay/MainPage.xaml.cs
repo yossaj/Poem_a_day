@@ -59,20 +59,19 @@ namespace PoemaDay
                 {
                     conn.CreateTable<Poem>();
                     rows = conn.Insert(poem);
-
                 }
                 else
                 {
-                    DisplayAlert("Something Went Wrong", "Experience was not added!", "OK");
+                    DisplayAlert("Something Went Wrong", "Poem not saved", "OK");
                 }
                 
                 if (rows > 0)
                 {
-                    DisplayAlert("Success", "Experience add: " + poem.concatLines.ToString() , "OK");
+                    DisplayAlert("Success", "Poem saved: \n " + poem.concatLines.ToString() , "OK");
                 }
                 else
                 {
-                    DisplayAlert("Something Went Wrong", "Experience was not added!", "OK");
+                    DisplayAlert("Something Went Wrong", "Poem not saved", "OK");
                 }
 
             }
