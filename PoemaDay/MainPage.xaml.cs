@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net.Http;
 using Newtonsoft.Json;
 using PoemaDay.model;
+using PoemaDay.services;
 using SQLite;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
@@ -12,55 +13,35 @@ namespace PoemaDay
 {
     public partial class MainPage : ContentPage
     {
+        Poem poem = new Poem();
+
         public MainPage()
         {
             InitializeComponent();
            
         }
 
-        Poem poem = new Poem();
-
-
-        async void GetPoemAsync()
-        {
-            List<Poem> poems = new List<Poem>();
-            using (HttpClient httpClient = new HttpClient())
-            {
-                Random rnd = new Random();
-                int linecount = rnd.Next(2, 6);
-                var response = await httpClient.GetAsync($"https://poetrydb.org/linecount/{linecount}");
-                var json = await response.Content.ReadAsStringAsync();
-                var poemList = JsonConvert.DeserializeObject<List<Poem>>(json);
-
-                int leng = poemList.Count();
-                
-                int poemNum = rnd.Next(0, leng);
-
-                
-                PoemTitle.Text = poemList[poemNum].title;
-                PoemAuthor.Text = poemList[poemNum].author;
-                String lines = "";
-                
-                //var lines = new List<Line>();
-
-                foreach (string pline in poemList[poemNum].lines)
-                {
-                    lines += pline + "\n";
-                }
-               
-                PoemBody.Text = lines;
-                poemList[poemNum].concatLines = lines;
-                poem = poemList[poemNum];
-            }
-
-        }
-
-
-        protected override void OnAppearing()
+        protected override async void OnAppearing()
         {
             base.OnAppearing();
+            poem = await PoemAPI.GetPoemAsync();
+            SetPoem();
+        }
 
-            GetPoemAsync();
+        private void SetPoem() {
+
+            PoemTitle.Text = poem.title;
+            PoemAuthor.Text = poem.author;
+            String lines = "";
+
+            foreach (string pline in poem.lines)
+            {
+                lines += pline + "\n";
+            }
+
+            
+            poem.concatLines = lines;
+            PoemBody.Text = poem.concatLines;
         }
 
         void ArchiveButton_Clicked(System.Object sender, System.EventArgs e) => Navigation.PushAsync(new SavedPoems());
@@ -78,6 +59,7 @@ namespace PoemaDay
                 {
                     conn.CreateTable<Poem>();
                     rows = conn.Insert(poem);
+
                 }
                 else
                 {
@@ -86,7 +68,7 @@ namespace PoemaDay
                 
                 if (rows > 0)
                 {
-                    DisplayAlert("Success", "Experience add: " + rows.ToString(), "OK");
+                    DisplayAlert("Success", "Experience add: " + poem.concatLines.ToString() , "OK");
                 }
                 else
                 {
