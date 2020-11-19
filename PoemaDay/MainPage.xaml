@@ -45,8 +45,10 @@
 
                  <Button
                      x:Name="SaveButton"
-                     Text="Save Poem"
-                     HorizontalOptions="FillAndExpand"
+                     Text="Save"
+                     Image="save.png"
+                     HorizontalOptions="Start"
+                     Padding="60,0"
                      Clicked="SaveButton_Clicked"
                      FontAttributes="Bold"
                      BackgroundColor="{StaticResource secondaryColorDark}"

@@ -133,4 +133,7 @@
       <Name>PoemaDay</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\save.png" />
+  </ItemGroup>
 </Project>

@@ -14,7 +14,7 @@ namespace PoemaDay
             MainPage = new NavigationPage(new MainPage())
             {
                 BarBackgroundColor = (Color)App.Current.Resources["secondaryColor"],
-                BarTextColor = (Color)App.Current.Resources["darkGray"],
+                BarTextColor = (Color)App.Current.Resources["darkGray"]
 
             };
             DatabaseLocation = databaseLocation;
