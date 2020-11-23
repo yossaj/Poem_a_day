@@ -14,28 +14,20 @@ namespace PoemaDay
         {
             InitializeComponent();
             GetSavedPoems();
-
         }
 
 
         private void GetSavedPoems()
         {
-            using (SQLiteConnection conn = new SQLiteConnection(App.DatabaseLocation))
+            var poems = Poem.GetSavedPoems();
+            foreach (Poem poem in poems)
             {
-                conn.CreateTable<Poem>();
-                var poems = conn.Table<Poem>().ToList();
-                foreach(Poem poem in poems)
-                {
-                    AddPoemsToView(poem);
-                };
-                
-            }
+                AddPoemsToView(poem);
+            };
         }
 
         private void AddPoemsToView(Poem poem)
         {
-
-
             Label title = new Label()
             {
                 Text = poem.title,
@@ -61,7 +53,6 @@ namespace PoemaDay
             StackLayout innerContainer = new StackLayout()
             {
                 Margin = 10
-
             };
             
             innerContainer.Children.Add(title);
@@ -71,12 +62,10 @@ namespace PoemaDay
 
             StackLayout parent = PoemList;
             parent.Children.Add(pancakeView);
-       
         }
 
         private async void NavigateToDetailPage(Poem poem)
         {
-
             PoemDetail poemDetail = new PoemDetail
             {
                 BindingContext = poem

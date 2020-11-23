@@ -46,7 +46,6 @@ namespace PoemaDay.model
             {
                 author = value;
                 OnPropertyChanged("Author");
-
             }
         }
 
@@ -122,20 +121,26 @@ namespace PoemaDay.model
                 }
                 else
                 {
-                    //DisplayAlert("Something Went Wrong", "Poem not saved", "OK");
                     return false;
                 }
 
                 if (rows > 0)
                 {
-                    //DisplayAlert("Success", "Poem saved: \n " + poem.concatLines.ToString(), "OK");
                     return true;
                 }
                 else
                 {
-                    //DisplayAlert("Something Went Wrong", "Poem not saved", "OK");
                     return false;
                 }
+            }
+        }
+
+        public static List<Poem> GetSavedPoems()
+        {
+            using (SQLiteConnection conn = new SQLiteConnection(App.DatabaseLocation))
+            {
+                conn.CreateTable<Poem>();
+                return conn.Table<Poem>().ToList();
             }
         }
     }

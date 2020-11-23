@@ -11,10 +11,5 @@ namespace PoemaDay
         {
             InitializeComponent();
         }
-
-        private void LoadPoem()
-        {
-
-        }
     }
 }
