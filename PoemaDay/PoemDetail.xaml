@@ -13,11 +13,11 @@
         <StackLayout
             Margin="2"
             VerticalOptions="CenterAndExpand">
-            <Label x:Name="PoemTitle" Text="{Binding title}" Style="{StaticResource titleText}" />
-            <Label x:Name="PoemAuthor" Text="{Binding author}" Style="{StaticResource subtitleText}" Margin="0,0,0,20"/>
+            <Label x:Name="PoemTitle" Text="{Binding Title}" Style="{StaticResource titleText}" />
+            <Label x:Name="PoemAuthor" Text="{Binding Author}" Style="{StaticResource subtitleText}" Margin="0,0,0,20"/>
             <Label
                 x:Name="PoemBody"
-                Text="{Binding concatLines}"
+                Text="{Binding ConcatLines}"
                 LineHeight="1.3"
                 Style="{StaticResource poemText}"
                 />

@@ -13,59 +13,27 @@ namespace PoemaDay
 {
     public partial class MainPage : ContentPage
     {
-        Poem poem = new Poem();
+        Poem poem;
 
         public MainPage()
         {
             InitializeComponent();
-           
-        }
-
-        protected override async void OnAppearing()
-        {
-            base.OnAppearing();
-            poem = await PoemAPI.GetPoemAsync();
             SetPoem();
+            
         }
 
-        private void SetPoem() {
-
-            PoemTitle.Text = poem.title;
-            PoemAuthor.Text = poem.author;
-            String lines = "";
-
-            foreach (string pline in poem.lines)
-            {
-                lines += pline + "\n";
-            }
-
-            
-            poem.concatLines = lines;
-            PoemBody.Text = poem.concatLines;
+        private async void SetPoem() {
+            poem = await Poem.GetPoem();
+            mainContainerStack.BindingContext = poem;
         }
 
         void ArchiveButton_Clicked(System.Object sender, System.EventArgs e) => Navigation.PushAsync(new SavedPoems());
 
-        void SaveButton_Clicked(System.Object sender, System.EventArgs e) => SavePoemToTable();
+        void SaveButton_Clicked(System.Object sender, System.EventArgs e) => SavePoem();
 
-        private void SavePoemToTable()
+        private void SavePoem()
         {
-            using (SQLiteConnection conn = new   SQLiteConnection(App.DatabaseLocation))
-            {
-                var rows = 0;
-
-
-                if (poem != null)
-                {
-                    conn.CreateTable<Poem>();
-                    rows = conn.Insert(poem);
-                }
-                else
-                {
-                    DisplayAlert("Something Went Wrong", "Poem not saved", "OK");
-                }
-                
-                if (rows > 0)
+                if (Poem.SavePoem(poem))
                 {
                     DisplayAlert("Success", "Poem saved: \n " + poem.concatLines.ToString() , "OK");
                 }
@@ -73,8 +41,6 @@ namespace PoemaDay
                 {
                     DisplayAlert("Something Went Wrong", "Poem not saved", "OK");
                 }
-
-            }
         }
     }
 
