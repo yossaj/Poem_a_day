@@ -32,7 +32,15 @@ namespace PoemaDay.model
             get { return title; }
             set
             {
-                title = value;
+                if (value.ToString().Contains("Fragment: "))
+                {
+                    title = value.ToString().Remove(0, 9);
+                }
+                else
+                {
+                    title = value;
+                }
+                
                 OnPropertyChanged("Title");
             }
         }
@@ -91,8 +99,6 @@ namespace PoemaDay.model
 
         private void OnPropertyChanged(string propertyName)
         {
-
-
             if(PropertyChanged != null)
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
         }
@@ -123,7 +129,6 @@ namespace PoemaDay.model
                 {
                     return false;
                 }
-
                 if (rows > 0)
                 {
                     return true;

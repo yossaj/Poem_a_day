@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using PoemaDay.model;
-using SQLite;
+﻿using PoemaDay.model;
 using Xamarin.Forms;
-using Xamarin.Forms.Markup;
 using Xamarin.Forms.PancakeView;
 
 namespace PoemaDay
