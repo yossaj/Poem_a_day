@@ -20,5 +20,7 @@
   <ItemGroup>
     <Folder Include="model\" />
     <Folder Include="services\" />
+    <Folder Include="viewmodel\" />
+    <Folder Include="viewmodel\commands\" />
   </ItemGroup>
 </Project>
