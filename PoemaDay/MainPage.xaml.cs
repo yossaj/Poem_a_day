@@ -14,7 +14,6 @@ namespace PoemaDay
 {
     public partial class MainPage : ContentPage
     {
-        Poem poem;
         MainPageVM viewModel;
 
         public MainPage()
@@ -31,19 +30,6 @@ namespace PoemaDay
             BindingContext = viewModel;
         }
 
-        void SaveButton_Clicked(System.Object sender, System.EventArgs e) => SavePoem();
-
-        private void SavePoem()
-        {
-                if (Poem.SavePoem(viewModel.poem))
-                {
-                    DisplayAlert("Success", "Poem saved" , "OK");
-                }
-                else
-                {
-                    DisplayAlert("Something Went Wrong", "Poem not saved", "OK");
-                }
-        }
     }
 
    

@@ -18,8 +18,8 @@
             x:Name="mainContainerStack"
             Margin="2"
             VerticalOptions="CenterAndExpand">
-            <Label x:Name="PoemTitle" Text="{Binding poem.Title, Mode=TwoWay}" Style="{StaticResource titleText}" />
-            <Label x:Name="PoemAuthor" Text="{Binding poem.Author, Mode=TwoWay}" Style="{StaticResource subtitleText}" Margin="0,0,0,20"/>
+            <Label x:Name="PoemTitle" Text="{Binding poem.Title}" Style="{StaticResource titleText}" />
+            <Label x:Name="PoemAuthor" Text="{Binding poem.Author}" Style="{StaticResource subtitleText}" Margin="0,0,0,20"/>
             <Label
                 x:Name="PoemBody"
                 Text="{Binding poem.ConcatLines}"
@@ -52,7 +52,7 @@
                      Image="save.png"
                      HorizontalOptions="Start"
                      Padding="60,0"
-                     Clicked="SaveButton_Clicked"
+                     Command="{Binding SaveCommand}"
                      FontAttributes="Bold"
                      BackgroundColor="{StaticResource secondaryColorDark}"
                      />
