@@ -23,6 +23,7 @@ namespace PoemaDay.iOS
         //
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
+            global::Xamarin.Forms.Forms.SetFlags("SwipeView_Experimental");
             global::Xamarin.Forms.Forms.Init();
             string dbName = "poem_db.sqlite";
             string folderPath = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal), "..", "Library");
