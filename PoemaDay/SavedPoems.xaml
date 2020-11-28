@@ -47,7 +47,7 @@
                         <SwipeItems
                             Mode="Reveal">
                             <SwipeItemView
-                                Command="{Binding Path=BindingContext.FavoriteCommand, Source={x:Reference Name=SavedPoemsPage}}" CommandParameter="{Binding .}">
+                                Command="{Binding Path=BindingContext.DeleteCommand, Source={x:Reference Name=SavedPoemsPage}}" CommandParameter="{Binding .}">
                                 <Grid
                                     WidthRequest="110"
                                     BackgroundColor="Transparent"
@@ -65,9 +65,16 @@
                     </SwipeView.RightItems>
             <SwipeView.Content>
                 <yummy:PancakeView
+
+
                     BackgroundColor="{StaticResource secondaryColor}"
                     Margin="2"
                     CornerRadius="30,0,0,30">
+
+                               <yummy:PancakeView.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding Path=BindingContext.NavigateCommand, Source={x:Reference Name=SavedPoemsPage}}" CommandParameter="{Binding .}" />
+                </yummy:PancakeView.GestureRecognizers>
+
                     <StackLayout Margin="6">
                         <Label Text="{Binding Title}" Margin="16, 6, 6, 0"/>
                         <Label Text="{Binding Author}" Margin="16, 6, 6, 0"/>

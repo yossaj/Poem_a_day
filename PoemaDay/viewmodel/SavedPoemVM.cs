@@ -9,7 +9,8 @@ namespace PoemaDay.viewmodel
     public class SavedPoemVM : BindableObject
     {
         public Poem selectedPoem { get; set; }
-        public Command<Poem> FavoriteCommand { get; set; }
+        public Command<Poem> DeleteCommand { get; set; }
+        public Command<Poem> NavigateCommand { get; set; }
 
         ObservableCollection<Poem> poems;
 
@@ -27,9 +28,15 @@ namespace PoemaDay.viewmodel
         {
             LoadPoems();
 
-            FavoriteCommand = new Command<Poem>((f) =>
+            DeleteCommand = new Command<Poem>((f) =>
             {
-                MessagingCenter.Send(f, "Favorited");
+                Poem.DeletePoem(f);
+                LoadPoems();
+            });
+
+            NavigateCommand = new Command<Poem>((f) =>
+            {
+                NavigateToDetailPage(f);
             });
         }
 
@@ -37,6 +44,17 @@ namespace PoemaDay.viewmodel
         {
             var _poems = Poem.GetSavedPoems();
             Poems = new ObservableCollection<Poem>(_poems);
+        }
+
+
+        private async void NavigateToDetailPage(Poem poem)
+        {
+            PoemDetail poemDetail = new PoemDetail
+            {
+                BindingContext = poem
+            };
+            await App.Current.MainPage.Navigation.PushAsync(poemDetail);
+
         }
     }
 }
