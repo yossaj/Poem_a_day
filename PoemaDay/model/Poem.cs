@@ -140,6 +140,15 @@ namespace PoemaDay.model
             }
         }
 
+        public static void DeletePoem(Poem poem)
+        {
+            using (SQLiteConnection conn = new SQLiteConnection(App.DatabaseLocation))
+            {
+                conn.CreateTable<Poem>();
+                conn.Delete(poem);
+            }
+        }
+
         public static List<Poem> GetSavedPoems()
         {
             using (SQLiteConnection conn = new SQLiteConnection(App.DatabaseLocation))

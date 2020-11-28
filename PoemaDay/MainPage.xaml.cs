@@ -20,7 +20,6 @@ namespace PoemaDay
         {
             InitializeComponent();
             viewModel = new MainPageVM();
-            
             SetPoem();
             
         }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using PoemaDay.model;
 using PoemaDay.viewmodel.commands;
 
@@ -8,13 +9,13 @@ namespace PoemaDay.viewmodel
     {
 
         public Poem poem { get; set; }
+        
 
         public NavigationCommands NavCommands { get; set; }
         public SavePoemCommand SaveCommand { get; set; }
 
         public MainPageVM()
         {
-
             NavCommands = new NavigationCommands(this);
             SaveCommand = new SavePoemCommand(this);
         }
