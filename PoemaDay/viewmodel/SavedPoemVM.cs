@@ -33,7 +33,7 @@ namespace PoemaDay.viewmodel
             });
         }
 
-        void LoadPoems()
+        public void LoadPoems()
         {
             var _poems = Poem.GetSavedPoems();
             Poems = new ObservableCollection<Poem>(_poems);

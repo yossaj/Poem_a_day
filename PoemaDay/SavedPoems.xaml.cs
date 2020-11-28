@@ -20,6 +20,8 @@ namespace PoemaDay
             {
                 Poem.DeletePoem(f);
                 DisplayAlert("Deleted", $"{f.Title} has been deleted!", "Thanks");
+                viewModel.LoadPoems();
+                
             });
         }
 
