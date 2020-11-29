@@ -31,6 +31,9 @@
             <Setter Property="TextColor" Value="{StaticResource offBlack}"/>
             <Setter Property="FontSize" Value="Medium"/>
         </Style>
+
+
+
             </ResourceDictionary>
     </Application.Resources>
 </Application>
