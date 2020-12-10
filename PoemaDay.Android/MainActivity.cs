@@ -1,17 +1,20 @@
-﻿using System;
-
-using Android.App;
+﻿using Android.App;
 using Android.Content.PM;
 using Android.Runtime;
-using Android.Views;
-using Android.Widget;
 using Android.OS;
-using System.IO;
+using MvvmCross.Forms.Platforms.Android.Views;
+using MvvmCross.Forms.Platforms.Android.Core;
 
 namespace PoemaDay.Droid
 {
-    [Activity(Label = "PoemaDay", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize)]
-    public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
+    [Activity(
+    Label = "PoemaDay.Android",
+    //Icon = "@drawable/icon",
+    //Theme = "@style/MyTheme",
+    MainLauncher = true,
+    ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation,
+    LaunchMode = LaunchMode.SingleTask)]
+    public class MainActivity : MvxFormsAppCompatActivity<MvxFormsAndroidSetup<App, FormsApp>, App, FormsApp>
     {
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -19,14 +22,9 @@ namespace PoemaDay.Droid
             ToolbarResource = Resource.Layout.Toolbar;
 
             base.OnCreate(savedInstanceState);
-            global::Xamarin.Forms.Forms.SetFlags("SwipeView_Experimental");
-            Xamarin.Essentials.Platform.Init(this, savedInstanceState);
-            global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
-            
-            string dbName = "poem_db.sqlite";
-            string folderPath = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);
-            string fullPath = Path.Combine(folderPath, dbName);
-            LoadApplication(new App(fullPath));
+            //global::Xamarin.Forms.Forms.SetFlags("SwipeView_Experimental");
+            //Xamarin.Essentials.Platform.Init(this, savedInstanceState);
+            //global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
         }
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
         {

@@ -117,45 +117,46 @@ namespace PoemaDay.model
 
         public static bool SavePoem(Poem poem)
         {
-            using (SQLiteConnection conn = new SQLiteConnection(App.DatabaseLocation))
-            {
-                var rows = 0;
-                if (poem != null)
-                {
-                    conn.CreateTable<Poem>();
-                    rows = conn.Insert(poem);
-                }
-                else
-                {
-                    return false;
-                }
-                if (rows > 0)
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
-            }
+            //using (SQLiteConnection conn = new SQLiteConnection(FormsApp.DatabaseLocation))
+            //{
+            //    var rows = 0;
+            //    if (poem != null)
+            //    {
+            //        conn.CreateTable<Poem>();
+            //        rows = conn.Insert(poem);
+            //    }
+            //    else
+            //    {
+            //        return false;
+            //    }
+            //    if (rows > 0)
+            //    {
+            //        return true;
+            //    }
+            //    else
+            //    {
+            //        return false;
+            //    }
+            //}
+            return true;
         }
 
         public static void DeletePoem(Poem poem)
         {
-            using (SQLiteConnection conn = new SQLiteConnection(App.DatabaseLocation))
-            {
-                conn.CreateTable<Poem>();
-                conn.Delete(poem);
-            }
+            //using (SQLiteConnection conn = new SQLiteConnection(FormsApp.DatabaseLocation))
+            //{
+            //    conn.CreateTable<Poem>();
+            //    conn.Delete(poem);
+            //}
         }
 
-        public static List<Poem> GetSavedPoems()
+        public static void GetSavedPoems()
         {
-            using (SQLiteConnection conn = new SQLiteConnection(App.DatabaseLocation))
-            {
-                conn.CreateTable<Poem>();
-                return conn.Table<Poem>().ToList();
-            }
+            //using (SQLiteConnection conn = new SQLiteConnection(FormsApp.DatabaseLocation))
+            //{
+            //    conn.CreateTable<Poem>();
+            //    return conn.Table<Poem>().ToList();
+            //}
         }
     }
 

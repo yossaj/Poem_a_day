@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using MvvmCross.Forms.Views;
 using Newtonsoft.Json;
 using PoemaDay.model;
 using PoemaDay.services;
@@ -12,21 +13,12 @@ using Xamarin.Forms.Internals;
 
 namespace PoemaDay
 {
-    public partial class MainPage : ContentPage
+    public partial class MainPage : MvxContentPage<MainPageVM>
     {
-        MainPageVM viewModel;
 
         public MainPage()
         {
             InitializeComponent();
-            viewModel = new MainPageVM();
-            SetPoem();
-            
-        }
-
-        private async void SetPoem() {
-            viewModel.poem = await Poem.GetPoem();
-            BindingContext = viewModel;
         }
 
     }

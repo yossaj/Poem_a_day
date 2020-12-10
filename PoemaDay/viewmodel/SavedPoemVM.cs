@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using MvvmCross.ViewModels;
 using PoemaDay.model;
 using Xamarin.Forms;
 
 namespace PoemaDay.viewmodel
 {
-    public class SavedPoemVM : BindableObject
+    public class SavedPoemVM : MvxViewModel
     {
         public Poem selectedPoem { get; set; }
         public Command<Poem> DeleteCommand { get; set; }
@@ -20,7 +21,7 @@ namespace PoemaDay.viewmodel
             set
             {
                 poems = value;
-                OnPropertyChanged();
+                RaisePropertyChanged(() => Poems);
             }
         }
 
@@ -42,8 +43,8 @@ namespace PoemaDay.viewmodel
 
         public void LoadPoems()
         {
-            var _poems = Poem.GetSavedPoems();
-            Poems = new ObservableCollection<Poem>(_poems);
+            //var _poems = Poem.GetSavedPoems();
+            //Poems = new ObservableCollection<Poem>(_poems);
         }
 
 
@@ -53,7 +54,7 @@ namespace PoemaDay.viewmodel
             {
                 BindingContext = poem
             };
-            await App.Current.MainPage.Navigation.PushAsync(poemDetail);
+            await FormsApp.Current.MainPage.Navigation.PushAsync(poemDetail);
 
         }
     }

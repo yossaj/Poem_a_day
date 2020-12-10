@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using MvvmCross.ViewModels;
 using PoemaDay.model;
 using PoemaDay.viewmodel.commands;
 
 namespace PoemaDay.viewmodel
 {
-    public class MainPageVM
+    public class MainPageVM : MvxViewModel
     {
 
         public Poem poem { get; set; }
@@ -22,18 +23,18 @@ namespace PoemaDay.viewmodel
 
         public void Navigate()
         {
-             App.Current.MainPage.Navigation.PushAsync(new SavedPoems());
+             FormsApp.Current.MainPage.Navigation.PushAsync(new SavedPoems());
         }
 
         public void SaveCurrentPoem()
         {
             if (Poem.SavePoem(poem))
             {
-                App.Current.MainPage.DisplayAlert("Success", "Poem saved", "OK");
+                FormsApp.Current.MainPage.DisplayAlert("Success", "Poem saved", "OK");
             }
             else
             {
-                App.Current.MainPage.DisplayAlert("Something Went Wrong", "Poem not saved", "OK");
+                FormsApp.Current.MainPage.DisplayAlert("Something Went Wrong", "Poem not saved", "OK");
             }
         }
     }

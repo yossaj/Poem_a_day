@@ -10,12 +10,10 @@
 
              <CollectionView
                 Grid.Row="1"
-
                  x:Name="SavePoemCollection"
                  ItemTemplate="{StaticResource SavedPoemItem}"
                 ItemsSource="{Binding Poems}"
                 Margin="12, 12, 12, 0">
-
                 <CollectionView.ItemsLayout>
                     <LinearItemsLayout
                         Orientation="Vertical"
