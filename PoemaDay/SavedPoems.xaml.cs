@@ -1,29 +1,25 @@
-﻿using PoemaDay.model;
+﻿using MvvmCross.Forms.Views;
+using PoemaDay.model;
 using PoemaDay.viewmodel;
 using Xamarin.Forms;
 using Xamarin.Forms.PancakeView;
 
 namespace PoemaDay
 {
-    public partial class SavedPoems : ContentPage
+    public partial class SavedPoems : MvxContentPage<SavedPoemVM>
     {
-        SavedPoemVM viewModel;
-
         public SavedPoems()
         {
             InitializeComponent();
-            if (Device.RuntimePlatform == Device.Android)
-            {
+            //if (Device.RuntimePlatform == Device.Android)
+            //{
                 
-                SavePoemCollection.ItemTemplate = (DataTemplate)SavedPoemsPage.Resources["SavedPoemItemAndroid"];
-            }
-            else
-            {
-                SavePoemCollection.ItemTemplate = (DataTemplate)SavedPoemsPage.Resources["SavedPoemItem"];
-            }
-
-            viewModel = new SavedPoemVM();
-            BindingContext = viewModel;
+            //    SavePoemCollection.ItemTemplate = (DataTemplate)SavedPoemsPage.Resources["SavedPoemItemAndroid"];
+            //}
+            //else
+            //{
+            //    SavePoemCollection.ItemTemplate = (DataTemplate)SavedPoemsPage.Resources["SavedPoemItem"];
+            //}
         }
 
     }
