@@ -43,8 +43,8 @@ namespace PoemaDay.viewmodel
 
         public void LoadPoems()
         {
-            //var _poems = Poem.GetSavedPoems();
-            //Poems = new ObservableCollection<Poem>(_poems);
+            var _poems = Poem.GetSavedPoems();
+            Poems = new ObservableCollection<Poem>(_poems);
         }
 
 

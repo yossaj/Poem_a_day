@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using PoemaDay.Helper;
 using PoemaDay.services;
 using SQLite;
 
@@ -11,9 +12,7 @@ namespace PoemaDay.model
     public class Poem : INotifyPropertyChanged
     {
 
-
         public int id;
-
         [PrimaryKey, AutoIncrement]
         public int Id
         {
@@ -26,7 +25,6 @@ namespace PoemaDay.model
         }
 
         public string title;
-
         public string Title
         {
             get { return title; }
@@ -46,7 +44,6 @@ namespace PoemaDay.model
         }
 
         public string author;
-
         public string Author
         {
             get { return author; }
@@ -59,7 +56,6 @@ namespace PoemaDay.model
 
         
         public List<string> lines;
-
         [Ignore]
         public List<string> Lines
         {
@@ -84,7 +80,6 @@ namespace PoemaDay.model
         }
 
         public string linecount;
-
         public string LineCount
         {
             get { return linecount; }
@@ -117,46 +112,46 @@ namespace PoemaDay.model
 
         public static bool SavePoem(Poem poem)
         {
-            //using (SQLiteConnection conn = new SQLiteConnection(FormsApp.DatabaseLocation))
-            //{
-            //    var rows = 0;
-            //    if (poem != null)
-            //    {
-            //        conn.CreateTable<Poem>();
-            //        rows = conn.Insert(poem);
-            //    }
-            //    else
-            //    {
-            //        return false;
-            //    }
-            //    if (rows > 0)
-            //    {
-            //        return true;
-            //    }
-            //    else
-            //    {
-            //        return false;
-            //    }
-            //}
-            return true;
+            using (SQLiteConnection conn = new SQLiteConnection(Constants.DBLocation))
+            {
+                var rows = 0;
+                if (poem != null)
+                {
+                    conn.CreateTable<Poem>();
+                    rows = conn.Insert(poem);
+                }
+                else
+                {
+                    return false;
+                }
+                if (rows > 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+
         }
 
         public static void DeletePoem(Poem poem)
         {
-            //using (SQLiteConnection conn = new SQLiteConnection(FormsApp.DatabaseLocation))
-            //{
-            //    conn.CreateTable<Poem>();
-            //    conn.Delete(poem);
-            //}
+            using (SQLiteConnection conn = new SQLiteConnection(Constants.DBLocation))
+            {
+                conn.CreateTable<Poem>();
+                conn.Delete(poem);
+            }
         }
 
-        public static void GetSavedPoems()
+        public static List<Poem> GetSavedPoems()
         {
-            //using (SQLiteConnection conn = new SQLiteConnection(FormsApp.DatabaseLocation))
-            //{
-            //    conn.CreateTable<Poem>();
-            //    return conn.Table<Poem>().ToList();
-            //}
+            using (SQLiteConnection conn = new SQLiteConnection(Constants.DBLocation))
+            {
+                conn.CreateTable<Poem>();
+                return conn.Table<Poem>().ToList();
+            }
         }
     }
 
