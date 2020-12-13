@@ -51,7 +51,9 @@
                         <SwipeItems
                             Mode="Reveal">
                             <SwipeItemView
-                                Command="{Binding Path=BindingContext.DeleteCommand, Source={x:Reference Name=SavedPoemsPage}}" CommandParameter="{Binding .}">
+                                Command="{Binding Path=ViewModel.DeleteCommand,
+                                Source={x:Reference Name=SavedPoemsPage}}"
+                                CommandParameter="{Binding .}">
                                 <Grid
                                     WidthRequest="110"
                                     BackgroundColor="Transparent"
@@ -74,7 +76,9 @@
                     CornerRadius="30,0,0,30">
 
                     <yummy:PancakeView.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding Path=BindingContext.NavigateCommand, Source={x:Reference Name=SavedPoemsPage}}" CommandParameter="{Binding .}" />
+                        <TapGestureRecognizer Command="{Binding Path=ViewModel.NavigateCommand,
+                            Source={x:Reference Name=SavedPoemsPage}}"
+                            CommandParameter="{Binding .}" />
                     </yummy:PancakeView.GestureRecognizers>
 
                     <StackLayout Margin="6">
@@ -91,14 +95,18 @@
         <SwipeView>
 
             <SwipeView.GestureRecognizers>
-                 <TapGestureRecognizer Command="{Binding Path=BindingContext.NavigateCommand, Source={x:Reference Name=SavedPoemsPage}}" CommandParameter="{Binding .}" />
+                 <TapGestureRecognizer Command="{Binding Path=ViewModel.NavigateCommand,
+                     Source={x:Reference Name=SavedPoemsPage}}"
+                     CommandParameter="{Binding .}" />
             </SwipeView.GestureRecognizers>
 
                 <SwipeView.RightItems>
                         <SwipeItems
                             Mode="Reveal">
                             <SwipeItemView
-                                Command="{Binding Path=BindingContext.DeleteCommand, Source={x:Reference Name=SavedPoemsPage}}" CommandParameter="{Binding .}">
+                                Command="{Binding Path=ViewModel.DeleteCommand,
+                                Source={x:Reference Name=SavedPoemsPage}}"
+                                CommandParameter="{Binding .}">
                                 <Grid
                                     WidthRequest="110"
                                     BackgroundColor="Transparent"

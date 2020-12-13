@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using MvvmCross.Commands;
 using MvvmCross.ViewModels;
 using PoemaDay.model;
 using Xamarin.Forms;
@@ -10,7 +11,7 @@ namespace PoemaDay.viewmodel
     public class SavedPoemVM : MvxViewModel
     {
         public Poem selectedPoem { get; set; }
-        public Command<Poem> DeleteCommand { get; set; }
+        public IMvxCommand<Poem> DeleteCommand { get; set; }
         public Command<Poem> NavigateCommand { get; set; }
 
         ObservableCollection<Poem> poems;
@@ -29,7 +30,7 @@ namespace PoemaDay.viewmodel
         {
             LoadPoems();
 
-            DeleteCommand = new Command<Poem>((f) =>
+            DeleteCommand = new MvxCommand<Poem>((f) =>
             {
                 Poem.DeletePoem(f);
                 LoadPoems();

@@ -11,15 +11,15 @@ namespace PoemaDay
         public SavedPoems()
         {
             InitializeComponent();
-            //if (Device.RuntimePlatform == Device.Android)
-            //{
-                
-            //    SavePoemCollection.ItemTemplate = (DataTemplate)SavedPoemsPage.Resources["SavedPoemItemAndroid"];
-            //}
-            //else
-            //{
-            //    SavePoemCollection.ItemTemplate = (DataTemplate)SavedPoemsPage.Resources["SavedPoemItem"];
-            //}
+            if (Device.RuntimePlatform == Device.Android)
+            {
+
+                SavePoemCollection.ItemTemplate = (DataTemplate)SavedPoemsPage.Resources["SavedPoemItemAndroid"];
+            }
+            else
+            {
+                SavePoemCollection.ItemTemplate = (DataTemplate)SavedPoemsPage.Resources["SavedPoemItem"];
+            }
         }
 
     }
